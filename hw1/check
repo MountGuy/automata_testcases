@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTCASES=(1 2 3)
+TESTCASES=(1 2 3 4 5 6 7 8 9 10)
 TESTDIR="testcases"
 
 TACASE="sample1"
@@ -54,6 +54,14 @@ echo '# Running testcases...'
 
 for TC in "${TESTCASES[@]}"
 do
+    case $2 in
+        r)
+            COM="python3 regGen.py ${TC}"
+            ;;
+        n)
+            COM="echo pass generating testcase"
+    esac
+    eval "${COM}"
     TFILE="${TESTDIR}/test${TC}"
     printf "Test %s..." "${TC}"
     case $1 in
