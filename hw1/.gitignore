@@ -2,6 +2,7 @@
 *.cpp
 *.py
 *.java
-run
+hw1
+hw1.class
 *.out
 testcases/*.out

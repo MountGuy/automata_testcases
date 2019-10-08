@@ -1,15 +1,15 @@
-c: NFA.c
-	gcc NFA.c -o run
+c: hw1.c
+	gcc -o hw1 hw1.c
 
-cpp: NFA.cpp
-	g++ NFA.cpp -o run
+cpp: hw1.cpp
+	g++ -std=c++11 -o hw1 hw1.cpp
 
-java: NFA.java
-	javac NFA.java
+java: hw1.java
+	javac hw1.java -encoding UTF-8
 
-python2: NFA.py
+py: hw1.py
 
-python3: NFA.py
+py3: hw1.py
 
 clean:
-	rm run NFA.class testcases/*.out 
+	rm -f hw1 hw1.class testcases/*.out 
