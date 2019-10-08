@@ -27,28 +27,6 @@ then
 fi
 echo ''
 
-echo '# Trying TA sample...'
-TFILE="${TESTDIR}/${TACASE}"
-printf "TA Sample..."
-case $1 in
-    c)
-        COMM="./hw1 ${TFILE}.in ${TFILE}.out"
-        ;;
-    cpp)
-        COMM="./hw1 ${TFILE}.in ${TFILE}.out"
-        ;;
-    py)
-        COMM="python hw1.py ${TFILE}.in ${TFILE}.out"
-        ;;
-    py3)
-        COMM="python3 hw1.py ${TFILE}.in ${TFILE}.out"
-        ;;
-    java)
-        COMM="java hw1 ${TFILE}.in ${TFILE}.out"
-esac  
-eval "${COMM}"
-eval "diff ${TFILE}.ans ${TFILE}.out > /dev/null"
-result $?
 
 echo '# Running testcases...'
 
