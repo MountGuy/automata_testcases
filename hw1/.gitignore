@@ -6,3 +6,5 @@ hw1
 hw1.class
 *.out
 testcases/*.out
+
+!regGen.py
