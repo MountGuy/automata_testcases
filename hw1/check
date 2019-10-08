@@ -1,0 +1,77 @@
+#!/bin/bash
+
+TESTCASES=(1 2 3)
+TESTDIR="testcases"
+
+TACASE="sample1"
+
+WRONG="$(tput setaf 1)✗$(tput sgr0)"
+CORRECT="$(tput setaf 2)✓$(tput sgr0)"
+
+function result {
+    if [ "$1" == 1 ]
+    then
+        echo "${WRONG}"
+    else
+        echo "${CORRECT}"
+    fi
+}
+
+echo "$1"
+
+echo '# Compiling...'
+if ! make $1
+then
+    echo ''
+    echo 'Compile fail.'
+    exit 1
+fi
+echo ''
+
+echo '# Trying TA sample...'
+TFILE="${TESTDIR}/${TACASE}"
+printf "TA Sample..."
+case $1 in
+    c)
+        COMM="./run ${TFILE}.in ${TFILE}.out"
+        ;;
+    cpp)
+        COMM="./run ${TFILE}.in ${TFILE}.out"
+        ;;
+    python2)
+        COMM="python2 ${TFILE}.in ${TFILE}.out"
+        ;;
+    python3)
+        COMM="python3 ${TFILE}.in ${TFILE}.out"
+        ;;
+esac  
+eval "${COMM}"
+
+eval "diff ${TFILE}.ans ${TFILE}.out > /dev/null"
+result $?
+
+echo '# Running testcases...'
+
+for TC in "${TESTCASES[@]}"
+do
+    TFILE="${TESTDIR}/test${TC}"
+    printf "Test %s..." "${TC}"
+    case $1 in
+        c)
+            COMM="./run ${TFILE}.in ${TFILE}.out"
+        ;;
+        cpp)
+            COMM="./run ${TFILE}.in ${TFILE}.out"
+        ;;
+        python2)
+            COMM="python2 ${TFILE}.in ${TFILE}.out"
+        ;;
+        python3)
+            COMM="python3 ${TFILE}.in ${TFILE}.out"
+        ;;
+    esac
+    eval "${COMM}"
+
+    eval "diff ${TFILE}.ans ${TFILE}.out > /dev/null"
+    result $?
+done
