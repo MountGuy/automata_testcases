@@ -1,4 +1,7 @@
-hw1.c
-out
+*.c
+*.cpp
+*.py
+*.java
+run
 *.out
 testcases/*.out
