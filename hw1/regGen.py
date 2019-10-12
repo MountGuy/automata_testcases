@@ -64,7 +64,7 @@ if __name__ == "__main__":
     lengthFactor = 0
     while True:
         pregex, regex, strings = regGen(lengthFactor, False)
-        if len(regex) > 30 and len(regex) < 60:
+        if len(regex) > 30 and len(regex) <= 50:
             break
     save = 0
     pregex = "^{}$".format(pregex)
